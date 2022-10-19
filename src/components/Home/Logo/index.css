@@ -1,26 +1,26 @@
-.logo {
-  font-family: 'Secular One', sans-serif;
-  margin-top: -18px;
+.logo{
+    font-family: 'Secular One', sans-serif;
+    margin-top: -18px;
 }
 
-.brand-title {
-  font-size: xx-large;
-  color: white;
+.brand-title{
+    font-size: xx-large;
+    color: white;
 }
 
-.brand-title h2 {
-  display: inline;
-  color: red;
-  font-size: inherit;
+.brand-title h2{
+    display: inline;
+    color: red;
+    font-size: inherit;
 }
 
-.brand-subtitle {
-  color: white;
-  margin-top: -30px;
-  font-size: small;
+.brand-subtitle{
+    color: white;
+    margin-top: -30px;
+    font-size: small;
 }
 
-.brand-subtitle p {
-  display: inline;
-  color: red;
+.brand-subtitle p{
+    display: inline;
+    color: red;
 }
