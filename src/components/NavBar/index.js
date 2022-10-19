@@ -1,6 +1,6 @@
 import "./index.css";
-import Logo from "../Logo";
-import { NavLink, Link } from "react-router-dom";
+import Logo from "../Home/Logo";
+import { Link } from "react-router-dom";
 
 const NavBar = () => (
   <div className="nav-bar">
