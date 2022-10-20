@@ -1,12 +1,12 @@
 steps:
   - name: node
     entrypoint: npm
+    args: ["install"]
+  - name: node
+    entrypoint: npm
     args: ["run", "generate-json"]
     env:
       - "SERVICE_ACCOUNT_KEY=${_SERVICE_ACCOUNT_KEY}"
-  - name: node
-    entrypoint: npm
-    args: ["install"]
   - name: node
     entrypoint: npm
     args: ["run", "build"]
