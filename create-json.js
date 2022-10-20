@@ -1,4 +1,5 @@
 const fs = require('fs');
+require('dotenv').config();
 
 const service_account = process.env.SERVICE_ACCOUNT_KEY;
 const service_account_json = JSON.stringify(service_account);
