@@ -2,7 +2,7 @@ steps:
   - name: bash
     script: echo $_SERVICE_ACCOUNT_KEY > key.json
   - name: bash
-    script: cat key.json
+    script: ls
   # - name: node
   #   entrypoint: npm
   #   args: ["install"]
