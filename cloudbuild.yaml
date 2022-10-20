@@ -15,6 +15,9 @@ steps:
         gsutil cp -r 'gs://movies-prediction-mock-a/key.json' '.'
   - name: node
     entrypoint: npm
+    args: ["install"]
+  - name: node
+    entrypoint: npm
     args: ["run", "build"]
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "bash"
