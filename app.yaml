@@ -1,4 +1,5 @@
-runtime: nodejs16
+runtime: python37
+entrypoint: python main.py
 service: movie-test
 
 handlers:
