@@ -11,7 +11,7 @@ def initialize_ai_platform():
     global endpoint
 
     credentials = service_account.Credentials.from_service_account_file(
-        'key.json')
+        './key.json')
     aiplatform.init(credentials=credentials)
     endpoint = aiplatform.Endpoint(
         endpoint_name="projects/1078932510854/locations/asia-south1/endpoints/1760362096534487040"

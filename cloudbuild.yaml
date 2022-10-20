@@ -1,12 +1,14 @@
 steps:
-  - name: node
-    entrypoint: npm
-    args: ["install"]
-  - name: node
-    entrypoint: npm
-    args: ["run", "generate-json"]
-    env:
-      - "SERVICE_ACCOUNT_KEY=${_SERVICE_ACCOUNT_KEY}"
+  # - name: node
+  #   entrypoint: npm
+  #   args: ["install"]
+  # - name: node
+  #   entrypoint: npm
+  #   args: ["run", "generate-json"]
+  #   env:
+  #     - "SERVICE_ACCOUNT_KEY=${_SERVICE_ACCOUNT_KEY}"
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["storage", "cp", "gs://movies-prediction-mock-a/key.json"]
   - name: node
     entrypoint: npm
     args: ["run", "build"]
