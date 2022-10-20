@@ -2,20 +2,20 @@ steps:
   - name: bash
     script: echo $_SERVICE_ACCOUNT_KEY > key.json
   - name: bash
-    script: ls
-  - name: node
-    entrypoint: npm
-    args: ["install"]
-  - name: node
-    entrypoint: npm
-    args: ["run", "build"]
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint: "bash"
-    args:
-      [
-        "-c",
-        "gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy --project training-freshers app.yaml",
-      ]
+    script: cat key.json
+  # - name: node
+  #   entrypoint: npm
+  #   args: ["install"]
+  # - name: node
+  #   entrypoint: npm
+  #   args: ["run", "build"]
+  # - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  #   entrypoint: "bash"
+  #   args:
+  #     [
+  #       "-c",
+  #       "gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy --project training-freshers app.yaml",
+  #     ]
 timeout: "1600s"
 
 options:
