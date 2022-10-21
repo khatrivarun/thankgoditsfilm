@@ -1,0 +1,115 @@
+.home-page{
+
+    .text-zone{
+        position: absolute;
+        left: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        max-height: 90%;
+    }
+
+    h1{
+        color: #fff;
+        font-size: 53px;
+        margin: 0;
+        font-family: 'Coolvetica';
+        font-weight: 400;
+
+        // &::before{
+        //     content: '<h1>';
+        //     font-family: 'Source Code Pro';
+        //     color: #ffd700;
+        //     font-size: 18px;
+        //     position: absolute;
+        //     margin-top: -40px;
+        //     left: 15px;
+        //     opacity: 0.6;
+        // }
+
+        // &::after{
+        //     content: '</h1>';
+        //     font-family: 'Source Code Pro';
+        //     color: #ffd700;
+        //     font-size: 18px;
+        //     position: absolute;
+        //     margin-top: 18px;
+        //     margin-left: 20px;
+        //     animation: fadeIn 1s 1.7s backwards;
+        //     opacity: 0.6;
+        // }
+
+        // img{
+        //     width: 32px;
+        //     margin-left: 20px;
+        //     opacity: 0;
+        //     height: auto;
+        //     animation: rotateIn 1s linear both;
+        //     animation-delay: 1.4s;
+        // }
+    }
+
+    h2{
+        color: #8d8d8d;
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 11px;
+        font-family: sans-serif;
+        letter-spacing: 3px;
+        animation: fadeIn 1s 1.8s backwards;
+    }
+
+    .gif-container{
+        z-index: 0;
+        position: absolute;
+        height: 350px;
+        width: 350px;
+        top: 0;
+        display: flex;
+        align-items: center;
+        right: 8%;
+        bottom: 0;
+        left: auto;
+        margin: auto;
+    }
+
+    .flat-button{
+        color: #D60B00;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        font-family: sans-serif;
+        text-decoration: none;
+        padding: 10px 18px;
+        border: 1px solid #D60B00;
+        margin-top: 25px;
+        float: left;
+        animation: fadeIn 1s 1.8s backwards;
+        white-space: nowrap;
+        text-shadow: rgb(255, 78, 78) 1px 0 10px;
+        box-shadow: rgb(255, 78, 78) 1px 0 10px;
+
+        &:hover{
+            background: white;
+            color: #D60B00;
+            text-shadow: none;
+            box-shadow: none;
+            font-weight: bold;
+        }
+    }
+    .ott-info{
+        position: absolute;
+        left:7%;
+        top: 70%;
+        // transform: translateY(-50%);
+        width: 40%;
+        display: flex;
+        // max-height: 90%;
+
+        img{
+            display: flex;
+            padding-left: 40px;
+            object-fit:contain;
+        }
+    }
+}

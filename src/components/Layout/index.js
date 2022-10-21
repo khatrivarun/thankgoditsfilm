@@ -1,16 +1,16 @@
-import { Outlet } from "react-router-dom";
-import NavBar from "../NavBar";
-import "./index.css";
+import { Outlet } from 'react-router-dom'
+import Sidebar from '../Sidebar'
+import './index.scss'
 
 const Layout = () => {
   return (
     <div className="App">
-      <NavBar />
+      <Sidebar />
       <div className="page">
         <Outlet />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
