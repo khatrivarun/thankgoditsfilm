@@ -1,25 +1,87 @@
-import "./index.css";
-import Netflix from "../../assets/images/netflix-logo.svg";
-import Amazon from "../../assets/images/amazon.webp";
-import Disney from "../../assets/images/disney.png";
-import Television from "../../assets/images/tv.png";
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import AnimatedLetters from '../AnimatedLetters'
+import './index.scss'
+import Disney from '../../assets/images/disney.png'
+import Amazon from '../../assets/images/amazon.webp'
+import Netflix from '../../assets/images/netflix.png'
+import Gif from '../../assets/images/homepagegif.gif'
 
 const Home = () => {
-  return (
-    <div className="container">
-      <img
-        className="television-img"
-        src={Television}
-        alt="Television"
-        width={300}
-      />
-      <div className="image-fader">
-        <img src={Netflix} alt="Netflix" width={100} />
-        <img src={Amazon} alt="Amazon" width={280} />
-        <img src={Disney} alt="Disney" width={200} />
-      </div>
-    </div>
-  );
-};
+  const [letterClass, setLetterClass] = useState('text-animate')
+  const nameArray = ['t', '.', 'g', '.', 'i', '.', 'f']
+  const jobArray = [
+    't',
+    'h',
+    'a',
+    'n',
+    'k',
+    ' ',
+    'G',
+    'o',
+    'd',
+    ' ',
+    'i',
+    't',
+    's',
+    ' ',
+    'F',
+    'i',
+    'l',
+    'm',
+    's',
+  ]
 
-export default Home;
+  useEffect(() => {
+    setTimeout(() => {
+      setLetterClass('text-animate-hover')
+    }, 4000)
+  }, [])
+
+  return (
+    <>
+      <div className="container home-page">
+        <div className="text-zone">
+          <h1>
+            {/* <span className={letterClass}>H</span>
+            <span className={`${letterClass} _12`}>i,</span>
+            <br />
+            <span className={`${letterClass} _13`}>I</span> */}
+            {/* <span
+              className={`${letterClass} _14`}
+              style={{ 'padding-right': '14px' }}
+            >
+              'm
+            </span> */}
+
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={nameArray}
+              idx={15}
+            />
+            <br />
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={jobArray}
+              idx={22}
+            />
+          </h1>
+          <h2>Find the rating of your unreleased movie here.</h2>
+          <Link to="/analyze" className="flat-button">
+            GET RATING
+          </Link>
+        </div>
+        <div className="gif-container">
+          <img src={Gif} alt="homepagegif" />
+        </div>
+        <div className="ott-info">
+          <img src={Netflix} alt="Netflix" width={100} />
+          <img src={Amazon} alt="Amazon" width={100} />
+          <img src={Disney} alt="Disney" width={100} />
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default Home

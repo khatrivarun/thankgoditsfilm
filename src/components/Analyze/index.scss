@@ -1,0 +1,23 @@
+.analyze{
+    color: white;
+    font-family: "Coolvetica";
+    font-size: 15px;
+    position: absolute;
+    margin-top: 3%;
+
+    .form-group{
+        margin-top: 2%;
+
+        input{
+            background-color: rgb(231, 231, 231);
+        }
+    }
+
+    form{
+        .btn-submit{
+            border: 1px solid #efd81d;
+            color: #efd81d;
+            font-size: 20px;
+        }
+    }
+}
