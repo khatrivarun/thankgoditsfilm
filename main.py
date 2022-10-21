@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from google.cloud import aiplatform
 from google.oauth2 import service_account
+from copy import deepcopy
 
 
 app = Flask(__name__, static_folder="./build/static",
@@ -26,10 +27,32 @@ def index():
 @app.route("/predict", methods=["POST"])
 def hello():
     request_body = request.get_json()
-    response = endpoint.predict([request_body])
-    prediction = response[0][0]
-    prediction.pop("lower_bound")
-    return {"response": prediction}
+
+    nf_request = deepcopy(request_body)
+    nf_request['ott'] = 'NF'
+
+    amz_request = deepcopy(request_body)
+    amz_request['ott'] = 'AMZ'
+
+    dsny_request = deepcopy(request_body)
+    dsny_request['ott'] = 'DSNY'
+
+    nf_response = endpoint.predict([nf_request])
+    amz_response = endpoint.predict([amz_request])
+    dsny_response = endpoint.predict([dsny_request])
+
+    nf_prediction = nf_response[0][0]
+    amz_prediction = amz_response[0][0]
+    dsny_prediction = dsny_response[0][0]
+
+    nf_prediction.pop("lower_bound")
+    amz_prediction.pop("lower_bound")
+    dsny_prediction.pop("lower_bound")
+    return {"response": {
+        "NF": nf_prediction,
+        "DSNY": dsny_prediction,
+        "AMZ": amz_prediction
+    }}
 
 
 if __name__ == "__main__":
