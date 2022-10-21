@@ -1,8 +1,5 @@
 export const predict = async (data) => {
   data['release_year'] = `${data['release_year']}`
-
-  console.log(data)
-
   const response = await fetch('/predict', {
     method: 'POST',
     headers: {
