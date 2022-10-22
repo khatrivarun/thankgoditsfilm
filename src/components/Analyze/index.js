@@ -5,9 +5,30 @@ import COUNTRIES from '../../constants/countries'
 import RATINGS from '../../constants/ratings'
 import { useState } from 'react'
 import { predict } from '../../service/prediction'
-
+import { Spinner} from 'react-bootstrap';
+import Modal from 'react-modal';
 const Analyze = () => {
-  const [loading, setLoading] = useState(false)
+  let subtitle
+  const [NF, setNF] = useState(0);
+  const [DSN, setDSN] = useState(0);
+  const [AMZ, setAMZ] = useState(0);
+  let ratings;
+  const [loading, setLoading] = useState(0);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
 
   const initialValues = {
     cast: '',
@@ -37,17 +58,26 @@ const Analyze = () => {
   })
 
   const onSubmit = async (data) => {
-    setLoading(true)
+    setIsOpen(true);
+    setLoading(1)
     try {
       const result = await predict(data)
 
       // Set loading state as false
-      setLoading(false)
+      setLoading(0)
 
-      console.log(result)
+      ratings = result.response;
+
+      console.log(result);
+
+
+      setNF(result.response.NF.upper_bound);
+      setAMZ(result.response.AMZ.upper_bound);
+      setDSN(result.response.DSNY.upper_bound);
+
     } catch (error) {
       // Set loading state as false.
-      setLoading(false)
+      setLoading(0)
 
       console.log(error)
     }
@@ -58,6 +88,9 @@ const Analyze = () => {
     validationSchema: validationSchema,
     onSubmit: onSubmit,
   })
+
+
+
 
   return (
     <div className="analyze col-md-4 offset-4">
@@ -181,6 +214,48 @@ const Analyze = () => {
           >
             Submit
           </button>
+
+          <Modal
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            contentLabel="Example Modal"
+
+          >
+
+            <div>
+              <h1>Rating predictions</h1>
+              {(() => {
+                if (loading == 1) {
+                  return (
+                    <div>
+                      <Spinner style={{ marginBottom: 27 }} animation="border" variant="danger" />
+                    </div>
+                  )
+                } else if (loading == 0) {
+                  return (
+                    <div className='result'>
+                      <h1>NETFLIX {NF}</h1>
+                      <h1>AMAZON PRIME {AMZ}</h1>
+                      <h1>HOTSTART {DSN}</h1>
+                    </div>
+                  )
+                }
+              })()}
+            </div>
+
+
+
+
+
+
+            <button
+
+              onClick={closeModal}
+
+            >Close</button>
+
+          </Modal>
         </div>
       </form>
     </div>
