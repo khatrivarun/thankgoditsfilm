@@ -5,30 +5,29 @@ import COUNTRIES from '../../constants/countries'
 import RATINGS from '../../constants/ratings'
 import { useState } from 'react'
 import { predict } from '../../service/prediction'
-import { Spinner} from 'react-bootstrap';
-import Modal from 'react-modal';
+import { Spinner } from 'react-bootstrap'
+import Modal from 'react-modal'
 const Analyze = () => {
   let subtitle
-  const [NF, setNF] = useState(0);
-  const [DSN, setDSN] = useState(0);
-  const [AMZ, setAMZ] = useState(0);
-  let ratings;
-  const [loading, setLoading] = useState(0);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [NF, setNF] = useState(0)
+  const [DSN, setDSN] = useState(0)
+  const [AMZ, setAMZ] = useState(0)
+  let ratings
+  const [loading, setLoading] = useState(0)
+  const [modalIsOpen, setIsOpen] = useState(false)
 
   function openModal() {
-    setIsOpen(true);
+    setIsOpen(true)
   }
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = '#f00'
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
-
 
   const initialValues = {
     cast: '',
@@ -58,7 +57,7 @@ const Analyze = () => {
   })
 
   const onSubmit = async (data) => {
-    setIsOpen(true);
+    setIsOpen(true)
     setLoading(1)
     try {
       const result = await predict(data)
@@ -66,15 +65,13 @@ const Analyze = () => {
       // Set loading state as false
       setLoading(0)
 
-      ratings = result.response;
+      ratings = result.response
 
-      console.log(result);
+      console.log(result)
 
-
-      setNF(result.response.NF.upper_bound);
-      setAMZ(result.response.AMZ.upper_bound);
-      setDSN(result.response.DSNY.upper_bound);
-
+      setNF(result.response.NF.upper_bound)
+      setAMZ(result.response.AMZ.upper_bound)
+      setDSN(result.response.DSNY.upper_bound)
     } catch (error) {
       // Set loading state as false.
       setLoading(0)
@@ -88,9 +85,6 @@ const Analyze = () => {
     validationSchema: validationSchema,
     onSubmit: onSubmit,
   })
-
-
-
 
   return (
     <div className="analyze col-md-4 offset-4">
@@ -220,41 +214,48 @@ const Analyze = () => {
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             contentLabel="Example Modal"
-
+            className="Modal"
           >
-
-            <div>
-              <h1>Rating predictions</h1>
+            <div className="outputModal">
+              <h1 className="text-center rating-heading-op">
+                Rating Predictions
+              </h1>
               {(() => {
-                if (loading == 1) {
+                if (loading === 1) {
                   return (
                     <div>
-                      <Spinner style={{ marginBottom: 27 }} animation="border" variant="danger" />
+                      <Spinner
+                        style={{ marginBottom: 27 }}
+                        animation="border"
+                        variant="danger"
+                      />
                     </div>
                   )
-                } else if (loading == 0) {
+                } else if (loading === 0) {
                   return (
-                    <div className='result'>
-                      <h1>NETFLIX {NF}</h1>
-                      <h1>AMAZON PRIME {AMZ}</h1>
-                      <h1>HOTSTART {DSN}</h1>
+                    <div
+                      className="result text-center"
+                      style={{ 'margin-top': '20%' }}
+                    >
+                      <h1 className="netflix-result">Netflix: {NF}</h1>
+                      <h1 className="prime-result">
+                        Amazon Prime Video: {AMZ}
+                      </h1>
+                      <h1 className="disney-result">Disney+ : {DSN}</h1>
                     </div>
                   )
                 }
               })()}
             </div>
 
-
-
-
-
-
-            <button
-
-              onClick={closeModal}
-
-            >Close</button>
-
+            <div className="text-center" style={{ 'margin-bottom': '-10%' }}>
+              <button
+                className="btn btn-modal-close text-center"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+            </div>
           </Modal>
         </div>
       </form>
