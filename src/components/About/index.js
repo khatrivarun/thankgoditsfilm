@@ -1,21 +1,15 @@
 import AnimatedLetters from '../AnimatedLetters'
 import { useState, useEffect } from 'react'
 import './index.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faAngular,
-  faCss3,
-  faGitAlt,
-  faHtml5,
-  faJsSquare,
-  faReact,
-  faAmazon,
-  faPix,
-  faGithub,
-  faGoogle,
-  fa
-} from '@fortawesome/free-brands-svg-icons'
-import { faPersonDotsFromLine } from '@fortawesome/free-solid-svg-icons'
+
+
+import Netflix from '../../assets/images/netflix.png'
+import Amazon from '../../assets/images/amazon.webp'
+import Disney from '../../assets/images/disney.png'
+import tgif from '../../assets/images/tgif.png'
+import tgifFull from '../../assets/images/tgifFull.png'
+import quantiphi from '../../assets/images/quantiphi.png'
+
 
 const About = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
@@ -32,44 +26,48 @@ const About = () => {
         <h1>
           <AnimatedLetters
             letterClass={letterClass}
-            strArray={['A', 'b', 'o', 'u', 't', ' ', 'u', 's']}
+            strArray={['A', 'b', 'o', 'u', 't']}
             idx={15}
           />
         </h1>
         <p>
-          I'm a very ambitious front-end developer looking for a role in
-          established IT company with the opportunity to work with the latest
-          technologies on challenging and diverse projects.
+          We are a team of 5 budding developers who got the idea to create this
+          web app during Quantiphi, Inc's mock project.
         </p>
         <p>
-          I'm quietly confident, naturally curious and perpetually working on
-          imporving my skills one design problem at a time.
+          We realised that OTT platforms are a huge source of entertainment and
+          the primary choice of video content streaming right now. We decided
+          that with this project, we wanted to help the OTT platforms decide
+          which type of movies would their audiences like in terms of rating
+          predictions.
         </p>
         <p>
-          If I need to define myself in one sentence that would be a go-getter,
-          a sports fanatic, a movie enthusiast, and tech obsessed!!
+          This project also aims to help the movie producers/directors to
+          realise on which platform will their movie be most viewed on and
+          accordingly handle the financial transactions of the movie rights
+          purchase.
         </p>
       </div>
 
       <div className="stage-cube-cont">
         <div className="cube-spinner">
           <div className="face1">
-            <FontAwesomeIcon icon={faGithub} color="#DD0031" />
+            <img src={Netflix} alt="Netflix" height={30} />
           </div>
           <div className="face2">
-            <FontAwesomeIcon icon={faPersonDotsFromLine} color="#F06529" />
+            <img src={tgifFull} alt="tgifFull" height={200} />
           </div>
           <div className="face3">
-            <FontAwesomeIcon icon={faCss3} color="#28A4D9" />
+            <img src={Disney} alt="Disney" height={50} />
           </div>
           <div className="face4">
-            <FontAwesomeIcon icon={faReact} color="#5ED4F4" />
+            <img src={Amazon} alt="Amazon" height={40} />
           </div>
           <div className="face5">
-            <FontAwesomeIcon icon={faJsSquare} color="#EFD81D" />
+            <img src={tgif} alt="tgif" height={250} />
           </div>
           <div className="face6">
-            <FontAwesomeIcon icon={faGitAlt} color="#EC4D28" />
+            <img src={quantiphi} alt="quantiphi" height={250} />
           </div>
         </div>
       </div>

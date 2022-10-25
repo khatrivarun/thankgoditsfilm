@@ -31,3 +31,64 @@ body {
   }
 }
 
+.Modal{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    justify-content: space-evenly;
+    top: 25%;
+    left: 30%;
+    // right: 40px;
+    // bottom: 40px;
+    height: 400px;
+    width: 600px;
+    border-radius: 20px;
+    // padding:50px;
+    font-family: "Coolvetica";
+    background-color: #022c43;
+    color: white;
+
+    .rating-heading-op{
+      font-size: 25px;
+      // position: absolute;
+      // top: 5%;
+      // left: 37%;
+      color: #efd81d;
+    }
+
+    .outputModal{
+      display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    justify-content: space-evenly;
+    margin: -10%;
+    }
+
+    .netflix-result{
+      color: #E50914;
+    }
+
+    .prime-result{
+      color: #00A8E1;
+    }
+
+    .disney-result{
+      color: white;
+    }
+
+    .btn-modal-close{
+      border: 1px solid #efd81d;
+      color: #efd81d;
+      font-size: 20px;
+  
+        &:hover{
+          color: white;
+          border: 1px solid white;
+        }
+    }
+}
