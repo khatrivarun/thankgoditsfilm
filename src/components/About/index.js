@@ -9,7 +9,13 @@ import {
   faHtml5,
   faJsSquare,
   faReact,
+  faAmazon,
+  faPix,
+  faGithub,
+  faGoogle,
+  fa
 } from '@fortawesome/free-brands-svg-icons'
+import { faPersonDotsFromLine } from '@fortawesome/free-solid-svg-icons'
 
 const About = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
@@ -26,7 +32,7 @@ const About = () => {
         <h1>
           <AnimatedLetters
             letterClass={letterClass}
-            strArray={['A', 'b', 'o', 'u', 't', ' ', 'm', 'e']}
+            strArray={['A', 'b', 'o', 'u', 't', ' ', 'u', 's']}
             idx={15}
           />
         </h1>
@@ -48,10 +54,10 @@ const About = () => {
       <div className="stage-cube-cont">
         <div className="cube-spinner">
           <div className="face1">
-            <FontAwesomeIcon icon={faAngular} color="#DD0031" />
+            <FontAwesomeIcon icon={faGithub} color="#DD0031" />
           </div>
           <div className="face2">
-            <FontAwesomeIcon icon={faHtml5} color="#F06529" />
+            <FontAwesomeIcon icon={faPersonDotsFromLine} color="#F06529" />
           </div>
           <div className="face3">
             <FontAwesomeIcon icon={faCss3} color="#28A4D9" />

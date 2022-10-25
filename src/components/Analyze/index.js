@@ -71,9 +71,9 @@ const Analyze = () => {
       console.log(result);
 
 
-      setNF(result.response.NF.upper_bound);
-      setAMZ(result.response.AMZ.upper_bound);
-      setDSN(result.response.DSNY.upper_bound);
+      setNF((result.response.NF.value).toFixed(2));
+      setAMZ((result.response.AMZ.value).toFixed(2));
+      setDSN((result.response.DSNY.value).toFixed(2));
 
     } catch (error) {
       // Set loading state as false.
