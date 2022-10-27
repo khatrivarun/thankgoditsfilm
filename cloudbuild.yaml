@@ -1,0 +1,24 @@
+steps:
+  - name: "gcr.io/cloud-builders/gsutil"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        gsutil cp -r 'gs://movies-prediction-mock-a/key.json' '.'
+  - name: node
+    entrypoint: npm
+    args: ["install"]
+  - name: node
+    entrypoint: npm
+    args: ["run", "build"]
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+      [
+        "-c",
+        "gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy --project training-freshers app-$_APP_ENV.yaml",
+      ]
+timeout: "1600s"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
