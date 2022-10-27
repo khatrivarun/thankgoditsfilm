@@ -1,0 +1,10 @@
+runtime: python37
+entrypoint: python main.py
+service: movie-test
+
+handlers:
+  - url: /(.*\..+)$
+    static_files: build/\1
+    upload: build/(.*\..+)$
+  - url: /.*
+    script: auto
